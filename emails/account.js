@@ -27,7 +27,7 @@ const resetPassword = (email, token) =>{
           <h1>Вы забыли пароль?</h1>
           <p>Если нет, то проигнорируйте данное письмо</p>
           <p>Иначе нажмите на ссылку ниже:</p>
-          <p><a href="${keys.BASE_URL}/auth/password/${token}">Восстановить доступ</a></p>
+          <p><a href="${process.env.BASE_URL}/auth/password/${token}">Восстановить доступ</a></p>
           <hr />` 
     };
     mg.messages().send(data, function (error, body) {
