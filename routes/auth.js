@@ -7,7 +7,7 @@ const {sendEmail} = require('../emails/account')
 const {resetPassword} = require('../emails/account')
 const {registerValidators} = require('../utils/validators')
 const router = Router()
-
+const {resetValidators} = require('../utils/validators')
 
 router.get('/login', async (req, res) => {
   res.render('auth/login', {
@@ -82,7 +82,7 @@ router.get('/reset', (req, res) => {
   })
 })
 
-router.get('/password/:token', async (req, res) => {
+router.get('/password/:token',async (req, res) => {
   if (!req.params.token) {
     return res.redirect('/auth/login')
   }

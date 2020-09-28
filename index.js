@@ -81,6 +81,7 @@ async function start() {
     console.log(e)
   }
 }
+///c/Users/Константин/mongodb/bin/mongod.exe --dbpath=/c/Users/Константин/mongodb-data
 
 start()
 

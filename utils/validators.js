@@ -31,7 +31,12 @@ exports.registerValidators = [
     .isLength({min: 3}).withMessage('Name should contain at least 3 symbols')
     .trim()
 ]
-
+exports.resetValidators = [
+  body('password', 'Password should contain at least 6 symbols')
+    .isLength({min: 6, max: 56})
+    .isAlphanumeric()
+    .trim()
+]
 
 exports.courseValidators = [
   body('title').isLength({min: 3}).withMessage('Минимальная длинна названия 3 символа').trim(),
