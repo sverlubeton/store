@@ -45,7 +45,8 @@ router.get('/', auth, async (req, res) => {
     title: 'Cart',
     isCard: true,
     courses: courses,
-    price: computePrice(courses)
+    price: computePrice(courses),
+    role: req.user.role
   })
 })
 

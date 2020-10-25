@@ -1,4 +1,4 @@
-<h1>Add new course</h1>
+<h1 style="font-size: 40px;">Add laptop</h1>
 
 {{#if error}}
   <p class="alert">{{error}}</p>
@@ -7,8 +7,80 @@
 <form action="/add" method="POST" novalidate>
   <div class="input-field">
     <input id="title" name="title" type="text" class="validate" required value="{{data.title}}">
-    <label for="title">Name of course</label>
+    <label for="title">Name of laptop</label>
     <span class="helper-text" data-error="Type name"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="description" name="description" type="text" class="validate" required value="{{data.description}}">
+    <label for="description">Description</label>
+    <span class="helper-text" data-error="Type description"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="display" name="display" type="text" class="validate" required value="{{data.display}}">
+    <label for="display">Display</label>
+    <span class="helper-text" data-error="Type display"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="core" name="core" type="text" class="validate" required value="{{data.core}}">
+    <label for="core">Core</label>
+    <span class="helper-text" data-error="Type core"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="RAM" name="RAM" type="text" class="validate" required value="{{data.RAM}}">
+    <label for="RAM">RAM</label>
+    <span class="helper-text" data-error="Type RAM"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="OC" name="OC" type="text" class="validate" required value="{{data.OC}}">
+    <label for="OC">OC</label>
+    <span class="helper-text" data-error="Type OC"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="video" name="video" type="text" class="validate" required value="{{data.video}}">
+    <label for="video">Video</label>
+    <span class="helper-text" data-error="Type video"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="color" name="color" type="text" class="validate" required value="{{data.color}}">
+    <label for="color">Color</label>
+    <span class="helper-text" data-error="Type Color"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="keyboard" name="keyboard" type="text" class="validate" required value="{{data.keyboard}}">
+    <label for="keyboard">Keyboard</label>
+    <span class="helper-text" data-error="Type keyboard"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="harddrive" name="harddrive" type="text" class="validate" required value="{{data.harddrive}}">
+    <label for="harddrive">Hard drive</label>
+    <span class="helper-text" data-error="Type hard drive"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="ports" name="ports" type="text" class="validate" required value="{{data.ports}}">
+    <label for="ports">Ports</label>
+    <span class="helper-text" data-error="Type ports"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="battery" name="battery" type="text" class="validate" required value="{{data.battery}}">
+    <label for="battery">Battery</label>
+    <span class="helper-text" data-error="Type battery"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="weight" name="weight" type="text" class="validate" required value="{{data.weight}}">
+    <label for="weight">Weight</label>
+    <span class="helper-text" data-error="Type weight"></span>
   </div>
 
   <div class="input-field">
@@ -25,5 +97,5 @@
 
   <input type="hidden" name="_csrf" value="{{csrf}}">
 
-  <button class="btn btn-primary">Add course</button>
+  <button style="margin-bottom: 20px;" class="btn btn-primary">Add laptop</button>
 </form>

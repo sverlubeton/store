@@ -1,7 +1,68 @@
 <div class="course">
   <h1>{{course.title}}</h1>
+  <div class="carousel">
+    {{#each course.img as |image|}} 
+    <a class="carousel-item" href="#one!"><img src="{{image}}"></a>
+    {{/each}}
+  </div>
 
-  <img src="{{course.img}}" alt="{{course.title}}">
-
-  <p class="price big">{{course.price}}</p>
+  <h2>Specifications</h2>
+     <table class="open-course striped">
+        <tbody>
+          <tr>
+            <td class="spec">Description:</td>
+            <td>{{course.description}}</td>
+          </tr>
+          <tr>
+            <td class="spec">Display:</td>
+            <td>{{course.display}}</td>
+          </tr>
+          <tr>
+            <td class="spec">Core:</td>
+            <td>{{course.core}}</td>
+          </tr>
+          <tr>
+            <td class="spec">RAM:</td>
+            <td>{{course.RAM}}</td>
+          </tr>
+          <tr>
+            <td class="spec">OC:</td>
+            <td>{{course.OC}}</td>
+          </tr>
+          <tr>
+            <td class="spec">Video:</td>
+            <td>{{course.video}}</td>
+          </tr>
+          <tr>
+            <td class="spec">Color:</td>
+            <td>{{course.color}}</td>
+          </tr>
+          <tr>
+            <td class="spec">Keyboard:</td>
+            <td>{{course.keyboard}}</td>
+          </tr>
+          <tr>
+            <td class="spec">Hard drive:</td>
+            <td>{{course.harddrive}}</td>
+          </tr>
+          <tr>
+            <td class="spec">Ports:</td>
+            <td>{{course.ports}}</td>
+          </tr>
+          <tr>
+            <td class="spec">Battery:</td>
+            <td>{{course.battery}}</td>
+          </tr>
+          <tr>
+            <td class="spec">Weight:</td>
+            <td>{{course.weight}}</td>
+          </tr>
+          <tr>
+            <td class="spec">Price:</td>
+            <td>${{course.price}}.00</td>
+          </tr>
+          <tr>
+        </tbody>
+      </table>
+            
 </div>

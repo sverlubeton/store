@@ -1,0 +1,25 @@
+<h1 style="font-size: 40px;">Orders of users</h1>
+<table style="margin-bottom: 20px;" class="orders centered striped">
+        <thead>
+          <tr>
+              <th>Name(Email)</th>
+              <th>Orders</th>
+          </tr>
+        </thead>
+
+        <tbody>
+           {{#each orders as |order name|}}
+            <tr>
+              <td>{{order.user.name}}({{user.userId.email}})</td>
+              <td>{{order._id}} </br>
+                  <span class="date">{{order.date}}</span>   </br>
+                   {{#each courses}}
+                    {{course.title}} (x<strong>{{count}}</strong>)
+                    </br>
+                  {{/each}}
+                  <span style="font-size: 20px;" class="price order">{{price}}</span>
+              </td>
+          </tr>
+            {{/each}}
+        </tbody>
+      </table>

@@ -5,25 +5,27 @@ const auth = require('../middleware/auth')
 const {courseValidators} = require('../utils/validators')
 const router = Router()
 
-router.get('/', auth, (req, res) => {
+router.get('/', auth, async (req, res) => {
   res.render('add', {
-    title: 'Add course',
+    title: 'Add laptop',
+    role: true,
     isAdd: true
   })
 })
 
 router.post('/', auth, courseValidators, async (req, res) => {
   const errors = validationResult(req)
-
+  const images = req.body.img.split(',')
+  console.log(images);
   if (!errors.isEmpty()) {
     return res.status(422).render('add', {
-      title: 'Add course',
+      title: 'Add laptop',
       isAdd: true,
       error: errors.array()[0].msg,
       data: {
         title: req.body.title,
         price: req.body.price,
-        img: req.body.img
+        img: images
       }
     })
   }
@@ -31,13 +33,25 @@ router.post('/', auth, courseValidators, async (req, res) => {
   const course = new Course({
     title: req.body.title,
     price: req.body.price,
-    img: req.body.img,
-    userId: req.user
+    img: images,
+    userId: req.user,
+    description: req.body.description,
+    display: req.body.display,
+    core: req.body.core, 
+    RAM: req.body.ram,
+    OC: req.body.OC,
+    video: req.body.video,
+    color: req.body.color,
+    keyboard: req.body.color,
+    harddrive: req.body.harddrive,
+    ports: req.body.ports,
+    battery: req.body.battery,
+    weight: req.body.weight,
   })
 
   try {
     await course.save()
-    res.redirect('/courses')
+    res.redirect('/laptops')
   } catch (e) {
     console.log(e)
   }

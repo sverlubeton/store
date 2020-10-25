@@ -62,3 +62,11 @@ if ($card) {
 } 
 
 M.Tabs.init(document.querySelectorAll('.tabs'))
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.carousel');
+  var instances = M.Carousel.init(elems, {fullWidth: true, duration:300, shift: 50, padding: 60, numVisible: 7, indicators: true});
+  setInterval(()=>{
+    M.Carousel.getInstance(elems[0]).next()
+    }, 3000)
+});

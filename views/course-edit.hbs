@@ -1,10 +1,82 @@
-<h1>Edit {{course.title}}</h1>
+<h1 style="font-size: 40px;">Edit {{course.title}}</h1>
 
-<form action="/courses/edit" method="POST" class="course-form">
+<form action="/laptops/edit" method="POST" class="course-form">
   <div class="input-field">
     <input id="title" name="title" type="text" class="validate" required value="{{course.title}}">
     <label for="title">Name of course</label>
     <span class="helper-text" data-error="Type name"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="description" name="description" type="text" class="validate" required value="{{course.description}}">
+    <label for="description">Description</label>
+    <span class="helper-text" data-error="Type description"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="display" name="display" type="text" class="validate" required value="{{course.display}}">
+    <label for="display">Display</label>
+    <span class="helper-text" data-error="Type display"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="core" name="core" type="text" class="validate" required value="{{course.core}}">
+    <label for="core">Core</label>
+    <span class="helper-text" data-error="Type core"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="RAM" name="RAM" type="text" class="validate" required value="{{course.RAM}}">
+    <label for="RAM">RAM</label>
+    <span class="helper-text" data-error="Type RAM"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="OC" name="OC" type="text" class="validate" required value="{{course.OC}}">
+    <label for="OC">OC</label>
+    <span class="helper-text" data-error="Type OC"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="video" name="video" type="text" class="validate" required value="{{course.video}}">
+    <label for="video">Video</label>
+    <span class="helper-text" data-error="Type video"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="color" name="color" type="text" class="validate" required value="{{course.color}}">
+    <label for="color">Color</label>
+    <span class="helper-text" data-error="Type Color"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="keyboard" name="keyboard" type="text" class="validate" required value="{{course.keyboard}}">
+    <label for="keyboard">Keyboard</label>
+    <span class="helper-text" data-error="Type keyboard"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="harddrive" name="harddrive" type="text" class="validate" required value="{{course.harddrive}}">
+    <label for="harddrive">Hard drive</label>
+    <span class="helper-text" data-error="Type hard drive"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="ports" name="ports" type="text" class="validate" required value="{{course.ports}}">
+    <label for="ports">Ports</label>
+    <span class="helper-text" data-error="Type ports"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="battery" name="battery" type="text" class="validate" required value="{{course.battery}}">
+    <label for="battery">Battery</label>
+    <span class="helper-text" data-error="Type battery"></span>
+  </div>
+
+  <div class="input-field">
+    <input id="weight" name="weight" type="text" class="validate" required value="{{course.weight}}">
+    <label for="weight">Weight</label>
+    <span class="helper-text" data-error="Type weight"></span>
   </div>
 
   <div class="input-field">
@@ -25,8 +97,8 @@
   <button type="submit" class="btn btn-primary">Edit</button>
 </form>
 
-<form action="/courses/remove" method="POST">
+<form action="/laptops/remove" method="POST">
   <input type="hidden" name="_csrf" value="{{csrf}}">
   <input type="hidden" name="id" value="{{ course.id }}">
-  <button class="btn red">Remove</button>
+  <button style="margin-bottom: 25px;" class="btn red">Remove</button>
 </form>

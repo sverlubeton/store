@@ -20,8 +20,12 @@ const userMiddleware = require('./middleware/user')
 const errorHandler = require('./middleware/error')
 const fileMiddleware = require('./middleware/file')
 const cookieParser = require('cookie-parser')
+const usersRoutes = require('./routes/users')
+const orderUsers = require('./routes/orders-users')
 
 const PORT = process.env.PORT || 3000
+const {Router} = require('express')
+const router = Router()
 
 const app = express()
 const hbs = exphbs.create({
@@ -58,13 +62,23 @@ app.use(varMiddleware)
 app.use(userMiddleware)
 
 
-app.use('/', homeRoutes)
+app.use('/', authRoutes)
 app.use('/add', addRoutes)
-app.use('/courses', courseRoutes)
+app.use('/laptops', courseRoutes)
 app.use('/card', cardRoutes)
 app.use('/orders', ordersRoutes)
 app.use('/auth', authRoutes)
 app.use('/profile', profileRoutes)
+app.use('/users', usersRoutes)
+app.use('/order-users', orderUsers)
+app.get('/', (req, res ) => {
+  if(res.locals.isAuth){
+    res.redirect('/laptops')
+  } else{
+  res.redirect('/auth/login#login')
+  }
+})
+
 
 app.use(errorHandler)
 
@@ -76,6 +90,8 @@ async function start() {
     })
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`)
+      
+      
     })
   } catch (e) {
     console.log(e)

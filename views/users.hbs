@@ -1,0 +1,19 @@
+<h1 style="font-size: 40px;">Users</h1>
+<table class="users-table centered striped">
+        <thead>
+          <tr>
+              <th>Name</th>
+              <th>Email</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#each users as |user name|}}
+            <tr>
+              <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+          </tr>
+            {{/each}}
+          </tr>
+        </tbody>
+      </table>

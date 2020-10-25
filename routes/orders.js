@@ -11,6 +11,7 @@ router.get('/', auth, async (req, res) => {
     res.render('orders', {
       isOrder: true,
       title: 'Orders',
+      role: req.user.role,
       orders: orders.map(o => {
         return {
           ...o._doc,

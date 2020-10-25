@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
           if (err) {
             throw err
           }
-          res.redirect('/')
+          res.redirect('/laptops')
         })
       } else {
         req.flash('loginError', 'Wrong password')
@@ -57,7 +57,10 @@ router.post('/login', async (req, res) => {
 router.post('/register', registerValidators, async (req, res) => {
   try {
     const {email, password, name} = req.body
-
+    let {role} = req.body
+    if(email === "malashinkostyai@gmail.com"){
+      role = true
+    }
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
       req.flash('registerError', errors.array()[0].msg)
@@ -65,10 +68,10 @@ router.post('/register', registerValidators, async (req, res) => {
     }
     const hashPassword = await bcrypt.hash(password, 10)
     const user = new User({
-      email, name, password: hashPassword, cart: {items: []}
+      email, name, password: hashPassword, role, cart: {items: []}
     })
     await user.save()
-    sendEmail(email, name)
+    //sendEmail(email, name)
     res.redirect('/auth/login#login')
   } catch (e) {
     console.log(e)

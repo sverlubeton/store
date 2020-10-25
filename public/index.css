@@ -3,7 +3,11 @@
 }
 
 .price {
-  font-size: 2rem;
+  font-size: 25px;
+}
+
+.price .order{
+  font-size: 15px;
 }
 
 .course {
@@ -14,16 +18,45 @@
 }
 
 .course h1 {
-  margin-bottom: 2rem;
+  font-size: 24px;
+  font-family: "Roboto" , sans-serif;
+  font-weight: 700;
 }
 
-.course img {
+.course h2 {
+  font-size: 24px;
+  font-family: "Roboto" , sans-serif;
+  font-weight: 700;
+}
+/* .course img {
   max-width: 600px;
   height: auto;
+}
+ */
+.card-image {
+  height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.card-image img{
+  width:  100%;
 }
 
 .course .price.big {
   font-size: 2.5rem;
+}
+
+.courses.row{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.courses .col {
+  height: 100%;
+  margin-left: 0 !important;
+  left: 0 !important
 }
 
 .card-action.actions {
@@ -52,4 +85,30 @@
 .avatar {
   max-width: 300px;
   height: auto;
+}
+
+.courses {
+  margin-top: 50px;
+  max-width: 1140px
+}
+
+.open-course{
+ margin-bottom: 30px;
+}
+
+.users-table{
+  margin-top: 20px;
+}
+
+.orders{
+  margin-top: 20px;
+}
+
+.spec{
+  font-weight: bold;
+  padding: 35px;
+}
+
+.carousel{
+  
 }

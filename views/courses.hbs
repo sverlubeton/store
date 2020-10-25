@@ -1,9 +1,10 @@
 
 
 {{#if courses.length}}
-{{#each courses}}
-<div class="row">
-  <div class="col s6 offset-s3">
+
+<div class="courses row">
+  {{#each courses}}
+  <div class="col s12 l4 m6">
     <div class="card">
       <div class="card-image">
         <img src="{{img}}" alt="{{title}}">
@@ -13,11 +14,11 @@
         <p class="price">{{price}}</p>
       </div>
       <div class="card-action actions">
-        <a href="/courses/{{id}}" target="_blank">Open course</a>
+        <a href="/laptops/{{id}}">Open</a>
         {{#if @root.isAuth}}
 
           {{#ifeq userId._id @root.userId}}
-            <a href="/courses/{{id}}/edit?allow=true">Edit</a>
+            <a href="/laptops/{{id}}/edit?allow=true">Edit</a>
           {{/ifeq}}
 
           <form action="/card/add" method="POST">
@@ -29,8 +30,9 @@
       </div>
     </div>
   </div>
+  {{/each}}
 </div>
-{{/each}}
+
 {{else}}
-<p>There is no courses yet</p>
+<p>There is no laptops yet</p>
 {{/if}}
