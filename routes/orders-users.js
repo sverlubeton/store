@@ -7,7 +7,7 @@ const router = Router()
 router.get('/', auth, async (req, res) => {
     try {
       const orders = await Orders.find({})
-      .populate('user.userId')
+      .populate('user.userId')  
       res.render('order-users', {
         isOrdersUsers: true,
         title: 'Order-users',

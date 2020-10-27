@@ -71,7 +71,7 @@ router.post('/register', registerValidators, async (req, res) => {
       email, name, password: hashPassword, role, cart: {items: []}
     })
     await user.save()
-    //sendEmail(email, name)
+    sendEmail(email, name)
     res.redirect('/auth/login#login')
   } catch (e) {
     console.log(e)

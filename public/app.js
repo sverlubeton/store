@@ -29,6 +29,7 @@ if ($card) {
   $card.addEventListener('click', event => {
     if (event.target.classList.contains('js-remove')) {
       const id = event.target.dataset.id
+   
       const csrf = event.target.dataset.csrf
       
       fetch('/card/remove/' + id, {
@@ -45,7 +46,7 @@ if ($card) {
                 <td>${c.title}</td>
                 <td>${c.count}</td>
                 <td>
-                  <button class="btn btm-small js-remove" data-id="${c.id}">Remove</button>
+                  <button class="btn btm-small js-remove" data-csrf="${csrf}" data-id="${c.id}">Remove</button>
                 </td>
               </tr>
               `
@@ -61,12 +62,62 @@ if ($card) {
   })
 } 
 
+const $usersTable = document.querySelector('.users-table')
+console.log($usersTable);
+if ($usersTable) {
+  
+  $usersTable.addEventListener('click', event => {
+    if (event.target.classList.contains('rem')) {
+      const id = event.target.dataset.id
+      const csrf = event.target.dataset.csrf
+      fetch('/users/remove/' + id, {
+        method: 'delete',
+        headers: {
+          'X-XSRF-TOKEN': csrf
+        },
+      }).then(res => res.json())
+        .then(({users}) => {
+          
+            const html = users.map(u => {
+              return `
+              <tr>
+                <td>${u.name}</td>
+                <td>${u.email}</td>
+                <td>
+                  <button class="btn btm-small rem" data-csrf="${csrf}" data-id="${u._id}">Remove</button>
+                </td>
+              </tr>
+              `
+            }).join('')
+            $usersTable.querySelector('tbody').innerHTML = html
+          
+        })
+    }
+    
+  })
+} 
+
+
+
+
+
 M.Tabs.init(document.querySelectorAll('.tabs'))
 
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.carousel');
-  var instances = M.Carousel.init(elems, {fullWidth: true, duration:300, shift: 50, padding: 60, numVisible: 7, indicators: true});
+  var instances = M.Carousel.init(elems, {fullWidth: false, duration:300, dist:-100,shift: 50, padding: 100,  indicators: true });
   setInterval(()=>{
     M.Carousel.getInstance(elems[0]).next()
     }, 3000)
 });
+
+const pagination = document.querySelector('.pagination')
+pagination.addEventListener('click', function(event) {
+  if(event.target.classList.contains('waves-effect')){
+    const index = event.target.dataset.index
+    fetch('/laptops?skip=' + index, {
+      method: 'get',
+      
+    })
+  }
+})

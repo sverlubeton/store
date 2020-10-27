@@ -1,19 +1,31 @@
 <h1 style="font-size: 40px;">Users</h1>
+   {{#if users}}
 <table class="users-table centered striped">
         <thead>
           <tr>
               <th>Name</th>
               <th>Email</th>
+              <th>Action</th>
           </tr>
         </thead>
-
+     
         <tbody>
           {{#each users as |user name|}}
             <tr>
               <td>{{user.name}}</td>
-            <td>{{user.email}}</td>
+              <td>{{user.email}}</td>
+              <td>
+                
+          <button 
+            class="btn btm-small rem" 
+            data-id="{{user.id}}"
+            data-csrf="{{@root.csrf}}"
+          >Remove</button>
           </tr>
             {{/each}}
           </tr>
         </tbody>
       </table>
+      {{else}}
+      <p>No users yet</p>
+      {{/if}}

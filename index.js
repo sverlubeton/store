@@ -22,21 +22,29 @@ const fileMiddleware = require('./middleware/file')
 const cookieParser = require('cookie-parser')
 const usersRoutes = require('./routes/users')
 const orderUsers = require('./routes/orders-users')
+const Handlebars = require('handlebars')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+var paginateHelper = require('express-handlebars-paginate');
+
+
 
 const PORT = process.env.PORT || 3000
 const {Router} = require('express')
+const { template } = require('handlebars')
 const router = Router()
 
 const app = express()
 const hbs = exphbs.create({
   defaultLayout: 'main',
   extname: 'hbs',
-  helpers: require('./utils/hbs-helpers')
+  helpers: require('./utils/hbs-helpers'),
+  handlebars: allowInsecurePrototypeAccess(Handlebars)
 })
 const store = new MongoStore({
   collection: 'sessions',
   uri: process.env.MONGODB_URI
 })
+hbs.handlebars.registerHelper('paginate', paginateHelper.createPagination);
 
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')

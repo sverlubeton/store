@@ -5,13 +5,23 @@ const auth = require('../middleware/auth')
 const {courseValidators} = require('../utils/validators')
 const router = Router()
 
-function isOwner(course, req) {
-  return course.userId.toString() === req.user._id.toString()
-}
+{/* <ul class="pagination">
+  <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+  {{#each newArr as |item index|}}
+    <li class="waves-effect" data-index={{item}}>{{item}}</li>
+  {{/each}}
+  </ul> */}
 
 router.get('/', async (req, res) => {
   try {
-    const courses = await Course.find()
+    /* const courses = await Course.find() */
+    const {skip} = req.query
+    const allcourses = await Course.find({}).countDocuments()
+    const paginationItemsLength = Math.ceil(allcourses/5)
+    const newArr =  new Array(paginationItemsLength).fill(0).map((item, index) => index+1)
+    const activePaginationItem = (allcourses - skip)/5
+    //const courses = await Course.find({},null,{limit: 5,skip : skip ? ((+skip-1)*5) : 0})
+    const courses = await Course.find() 
     .populate('userId', 'email name')
     .select('price title img ')
     res.render('courses', {
@@ -20,6 +30,10 @@ router.get('/', async (req, res) => {
       userId: req.user ? req.user._id.toString() : null,
       courses,
       role: req.user.role,
+      paginationItemsLength,
+      activePaginationItem,
+      newArr,
+      pagination: { page: 1, limit:2, queryParams: skip }
     })
   } catch (e) {
     console.log(e)

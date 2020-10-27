@@ -16,7 +16,6 @@ router.get('/', auth, async (req, res) => {
 router.post('/', auth, courseValidators, async (req, res) => {
   const errors = validationResult(req)
   const images = req.body.img.split(',')
-  console.log(images);
   if (!errors.isEmpty()) {
     return res.status(422).render('add', {
       title: 'Add laptop',
@@ -38,7 +37,7 @@ router.post('/', auth, courseValidators, async (req, res) => {
     description: req.body.description,
     display: req.body.display,
     core: req.body.core, 
-    RAM: req.body.ram,
+    RAM: req.body.RAM,
     OC: req.body.OC,
     video: req.body.video,
     color: req.body.color,
