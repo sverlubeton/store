@@ -41,7 +41,7 @@ router.post('/', auth, courseValidators, async (req, res) => {
     OC: req.body.OC,
     video: req.body.video,
     color: req.body.color,
-    keyboard: req.body.color,
+    keyboard: req.body.keyboard,
     harddrive: req.body.harddrive,
     ports: req.body.ports,
     battery: req.body.battery,

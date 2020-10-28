@@ -38,36 +38,34 @@
 }
  */
 
+.card .card-content{
+  height: 150px;
+}
+
 .card-image {
-  
   height: 320px;
   width: 320px;
   display: flex;
   align-items: center;
+  
 }
-
-
 .card-image img{
   padding: 20px;
   width:  100%;
 }
-
-.course .price.big {
-  font-size: 2.5rem;
-}
-
 .courses.row{
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
 }
-
 .courses .col {
   height: 100%;
   margin-left: 0 !important;
   left: 0 !important
 }
-
+.course .price.big {
+  font-size: 2.5rem;
+}
 .card-action.actions {
   display: flex;
   align-items: center;
@@ -135,5 +133,5 @@
 }
 
 .row .col{
-  padding: 0 .30rem !important
+  padding: 2 .30rem !important
 }
